@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pillar")
+        if (collision.gameObject.CompareTag("Pillar"))
         {
             rigid.AddForce(new Vector2(-5, 5), ForceMode2D.Impulse);
             transform.Rotate(0, 0, 150);
