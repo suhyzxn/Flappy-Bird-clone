@@ -7,9 +7,9 @@ public class MovingBG : MonoBehaviour
         //Scrolling
         Scrolling();
         //Respawn
-        if (transform.position.x <= -18.94f)
+        if (transform.position.x <= -17.8f)
         {
-            transform.position = new Vector3(19.09f, 0, 0);
+            transform.position = new Vector3(18.05f, 0, 0);
         }
     }
 

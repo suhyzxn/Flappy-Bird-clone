@@ -7,7 +7,7 @@ public class Pillar : MonoBehaviour
         //Scrolling
         transform.position -= new Vector3(3f, 0, 0) * Time.deltaTime;
         //Destroy
-        if (transform.position.x <= -18.94f)
+        if (transform.position.x <= -17.8f)
             Destroy(gameObject);
     }
 }

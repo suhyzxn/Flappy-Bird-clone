@@ -18,7 +18,7 @@ public class SpawnPillar : MonoBehaviour
         {
             height = GetRandomHeight();
 
-            Instantiate(prefab, new Vector3(0, height, 0), Quaternion.identity);
+            Instantiate(prefab, new Vector3(3, height, 0), Quaternion.identity);
             yield return new WaitForSeconds(2f);
         }
     }
