@@ -1,4 +1,4 @@
-# Flappy-Bird
+# Flappy-Bird-clone
 
 Left Mouse Click: Jump
 
