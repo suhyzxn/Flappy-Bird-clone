@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         {
             rigid.AddForce(new Vector2(-5, 5), ForceMode2D.Impulse);
             transform.Rotate(0, 0, 150);
+            GameManager.instance.Die();
         }
-        GameManager.instance.Die();
     }
 }
