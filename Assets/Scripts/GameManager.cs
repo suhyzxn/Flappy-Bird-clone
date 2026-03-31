@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
-    int score = -1;
+    public int score = -1;
     public static GameManager instance;
     [SerializeField] GameObject ScoreObj;
     [SerializeField] GameObject StartScreen;
@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Rigidbody2D playerRigid;
     [SerializeField] TextMeshProUGUI EndScore;
     [SerializeField] TextMeshProUGUI HighScore;
+    [SerializeField] GameObject levelupObj;
+    [SerializeField] TextMeshProUGUI levelupText;
     int Int_HighScore;
     AudioSource audioSource;
 
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
+        levelupObj.SetActive(false);
         audioSource.Play();
         playerRigid.bodyType = RigidbodyType2D.Kinematic;
         Invoke("GameOver", 1f);
@@ -59,6 +62,23 @@ public class GameManager : MonoBehaviour
     {
         score++;
         ScoreText.text = score.ToString();
+
+        if (score % 10 == 0 && score <= 50)
+        {
+            if (score == 50)
+            {
+                levelupText.color = new Color32(240, 0, 255, 255);
+                levelupText.text = "Max Level!";
+            }
+                
+            LevelUp();
+            Invoke("LevelUp", 1f);
+        }
+    }
+
+    void LevelUp()
+    {
+        levelupObj.SetActive(!levelupObj.activeSelf);
     }
 
     public void GameStart()

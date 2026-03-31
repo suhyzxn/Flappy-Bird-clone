@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SpawnPillar : MonoBehaviour
 {
     public GameObject prefab;
     float lastHeight;
     float height;
+    public float delay = 2f;
+    int currentScore;
     void Start()
     {
         //Spawn
@@ -19,7 +22,13 @@ public class SpawnPillar : MonoBehaviour
             height = GetRandomHeight();
 
             Instantiate(prefab, new Vector3(3, height, 0), Quaternion.identity);
-            yield return new WaitForSeconds(2f);
+            if (GameManager.instance.score % 10 == 0 && GameManager.instance.score != currentScore)
+            {
+                if (GameManager.instance.score > 0 && GameManager.instance.score <= 50)
+                    delay -= 0.2f;
+                currentScore = GameManager.instance.score;
+            }
+            yield return new WaitForSeconds(delay);
         }
     }
 
