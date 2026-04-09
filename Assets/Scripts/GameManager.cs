@@ -41,27 +41,29 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (score == -1)
+        if (score == -1 && !OptionObj.activeSelf)
         {
             if (Input.GetMouseButtonDown(0))
                 GameStart();
+            else if (Input.GetKeyDown(KeyCode.Escape))
+                Esc();
             else if (Input.anyKeyDown)
                 return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Esc();
         }
     }
 
-    void Esc()
+    public void Esc()
     {
         StopAllCoroutines();
         Time.timeScale = 0;
         OptionObj.SetActive(!OptionObj.activeSelf);
         audioController.OptionSound();
-        if (!OptionObj.activeSelf)
+        if (score != -1 && !OptionObj.activeSelf)
         {
             countdown.gameObject.SetActive(true);
             StartCoroutine(countdown.Count());
@@ -135,14 +137,6 @@ public class GameManager : MonoBehaviour
     void GetScore()
     {
         Int_HighScore = PlayerPrefs.GetInt("HighScore");
-    }
-
-    public void Back()
-    {
-        OptionObj.SetActive(!OptionObj.activeSelf);
-        audioController.OptionSound();
-        countdown.gameObject.SetActive(true);
-        StartCoroutine(countdown.Count());
     }
 
     public void Quit()
