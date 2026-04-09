@@ -6,7 +6,8 @@ public class DeadZone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.Die();
+            if (!GameManager.instance.isDead)
+                GameManager.instance.Die();
         }
     }
 }

@@ -6,7 +6,11 @@ public class ScoreTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.ScoreUp();
+            var playerRigid = collision.GetComponent<Rigidbody2D>();
+            if (playerRigid.bodyType == RigidbodyType2D.Kinematic)
+                return;
+            else
+                GameManager.instance.ScoreUp();
         }
     }
 }

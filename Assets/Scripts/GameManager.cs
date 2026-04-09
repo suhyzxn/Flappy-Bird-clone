@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     
     public Countdown countdown;
     public GameObject OptionObj;
+    public bool isDead;
     int Int_HighScore;
     AudioSource audioSource;
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
+        isDead = true;
         levelupObj.SetActive(false);
         audioSource.Play();
         playerRigid.bodyType = RigidbodyType2D.Kinematic;
