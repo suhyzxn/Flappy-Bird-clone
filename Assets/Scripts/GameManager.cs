@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
             }
                 
             LevelUp();
+            Invoke("LevelUp", 1f);
         }
     }
 
