@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        levelupObj.SetActive(false);
         audioSource.Play();
         playerRigid.bodyType = RigidbodyType2D.Kinematic;
         Invoke("GameOver", 1f);
@@ -101,7 +100,6 @@ public class GameManager : MonoBehaviour
             }
                 
             LevelUp();
-            Invoke("LevelUp", 1f);
         }
     }
 
